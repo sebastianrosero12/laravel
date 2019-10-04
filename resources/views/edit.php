@@ -1,0 +1,1 @@
+<h1>Modificar Pelicula <?php echo $id ?></h1>

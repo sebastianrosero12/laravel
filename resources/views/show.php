@@ -1,0 +1,1 @@
+<h1>Vista Detalle Pelicula <?php echo $id ?></h1>
