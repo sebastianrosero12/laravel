@@ -33,20 +33,25 @@ Route::get('/catalog/edit/{id}', function ($id) {
 
 Route::get('/','HomeController@getHome');
 
-Route::get('/catalog','CatalogController@getIndex');
+Route::get('/catalog',['middleware'=>'auth'],'CatalogController@getIndex');
 
-Route::get('/catalog/show/{id}','CatalogController@getShow');
+Route::get('/catalog/show/{id}',['middleware'=>'auth'],'CatalogController@getShow');
 
-Route::get('/catalog/create','CatalogController@getCreate');
+Route::get('/catalog/create',['middleware'=>'auth'],'CatalogController@getCreate');
 
 Route::get('/catalog/edit/{id}','CatalogController@getEdit');
 
 
-Route::get('/login', function () {
-    return view('auth.login');
-});
+//Route::get('/login', function () {
+//    return view('auth.login');
+//});
 
-Route::get('/logout', function () {
-    return view('logout');
-});
+//Route::get('/logout', function () {
+//    return view('logout');
+//});
 
+Route::get('/home',['middleware'=>'auth'], 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home',['middleware'=>'auth'], 'HomeController@index')->name('home');
