@@ -28,11 +28,4 @@ class HomeController extends Controller
         $peliculas = Movie::all();
         return view('catalog.index',array('peliculas' => $peliculas));
     }
-    public function getCreate(){
-        return view('catalog.create');
-    }
-    public function getShow($id) { 
-        $pelicula = Movie::findOrFail($id);
-        return view('catalog.show',array('pelicula' => $pelicula)); 
-    }
 }

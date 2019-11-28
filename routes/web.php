@@ -33,18 +33,30 @@ Route::get('/catalog/edit/{id}', function ($id) {
 
 Route::get('/','HomeController@getHome');
 
-Route::get('/catalog',['middleware'=>'auth'],'CatalogController@getIndex');
+Route::get('/catalog','CatalogController@getHome')->middleware('auth');
 
-Route::get('/catalog/show/{id}',['middleware'=>'auth'],'CatalogController@getShow');
+Route::get('/catalog/show/{id}','CatalogController@getShow')->middleware('auth');
 
-Route::get('/catalog/create',['middleware'=>'auth'],'CatalogController@getCreate');
+Route::get('/catalog/create','CatalogController@getCreate')->middleware('auth');
+    
+Route::post('/catalog/create','CatalogController@postCreate');
 
-Route::get('/catalog/edit/{id}','CatalogController@getEdit');
+Route::put('/catalog/edit/{id}','CatalogController@putEdit');
+
+Route::put('/catalog/rent/{id}','CatalogController@putRent');
+
+Route::put('/catalog/return/{id}','CatalogController@putReturn');
+
+Route::get('/catalog/edit/{id}','CatalogController@getEdit')->middleware('auth');
+
+Route::delete('/catalog/delete/{id}','CatalogController@deleteMovie')->middleware('auth');
 
 
 //Route::get('/login', function () {
 //    return view('auth.login');
 //});
+    
+    
 
 //Route::get('/logout', function () {
 //    return view('logout');
